@@ -1,13 +1,20 @@
-class AlunoPos extends Usuario {
-    public AlunoPos(String codigo, String nome) {
-        super(codigo, nome, 4, 5);
+class AlunoGraduacao extends Usuario {
+
+    private int limiteEmprestimos;
+
+    public AlunoGraduacao(String codigo, String nome) {
+        super(codigo, nome, 3);
+        this.limiteEmprestimos = 3;
     }
 
-    @Override
-    public boolean podeEmprestar(Livro livro) {
-        // Implementar regras específicas
-        return true;
+    public int getLimiteEmprestimos() {
+        return this.limiteEmprestimos;
     }
+
+    public boolean podeEmprestar() {
+        return (this.getLimiteEmprestimos() > 0 && this.getTempoEmprestimo() > 0);
+    }
+
 }
 
 

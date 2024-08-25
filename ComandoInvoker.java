@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class ComandoInvoker {
     private Map<String, Comando> comandos = new HashMap<>();
 
@@ -12,14 +15,7 @@ public class ComandoInvoker {
         comandos.put("sai", new ComandoSair());
     }
 
-    public void executarComando(String linhaComando) {
-        String[] partes = linhaComando.split(" ");
-        String cmd = partes[0];
-        Comando comando = comandos.get(cmd);
-        if (comando != null) {
-            comando.executar(partes);
-        } else {
-            System.out.println("Comando nÃ£o reconhecido.");
-        }
+    public void executarComando() {
+        GerenciadorIO.getInstance().ProcessarComandos(comandos);
     }
 }

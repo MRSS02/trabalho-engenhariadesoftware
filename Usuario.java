@@ -1,19 +1,30 @@
+import java.util.ArrayList;
+import java.util.List;
+
 abstract class Usuario {
     private String codigo;
     private String nome;
-    private int limiteEmprestimos;
     private int tempoEmprestimo;
+    private List<Exemplar> LivrosEmprestados = new ArrayList<>();
+    private List<Exemplar> LivrosReservados = new ArrayList<>();
 
-    public Usuario(String codigo, String nome, int limiteEmprestimos, int tempoEmprestimo) {
+    public Usuario(String codigo, String nome, int tempoEmprestimo) {
         this.codigo = codigo;
         this.nome = nome;
-        this.limiteEmprestimos = limiteEmprestimos;
         this.tempoEmprestimo = tempoEmprestimo;
+
     }
 
-    public abstract boolean podeEmprestar(Livro livro);
+    public abstract boolean podeEmprestar();
     
     public String getNome() {
-        return nome;
+        return this.nome;
     }
+
+    public int getTempoEmprestimo() {
+        return this.tempoEmprestimo;
+    }
+
+
+
 }

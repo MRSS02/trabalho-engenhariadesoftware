@@ -1,7 +1,7 @@
 import java.util.ArrayList; // import the ArrayList class
 import java.util.List; // import the List class
 
-class Livro extends Exemplar {
+class Livro {
     private String codigo;
     private String titulo;
     private String editora;
