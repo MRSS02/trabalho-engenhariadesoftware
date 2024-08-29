@@ -2,7 +2,7 @@ class AlunoPos extends Usuario {
 
     private int limiteEmprestimos;
 
-    public AlunoPos(String codigo, String nome) {
+    public AlunoPos(int codigo, String nome) {
         super(codigo, nome, 5);
         this.limiteEmprestimos = 4;
     }
@@ -14,4 +14,10 @@ class AlunoPos extends Usuario {
     public boolean podeEmprestar() {
         return (this.getLimiteEmprestimos() > 0 && this.getTempoEmprestimo() > 0);
     }
+
+    public String getTipoUsuario() {
+        return "AlunoPos";
+    }
+ 
+
 }

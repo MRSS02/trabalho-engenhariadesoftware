@@ -1,24 +1,31 @@
-public class SistemaBiblioteca {
-    private static BibliotecaSistema instance;
-    private ComandoInvoker invoker = new ComandoInvoker();
+import java.util.ArrayList;
 
-    public void executarComando(String linhaComando) {
-        invoker.executarComando(linhaComando);
+public class SistemaBiblioteca {
+
+    private static ArrayList<Usuario> ListaUsuarios;
+    private static ArrayList<Livro> ListaLivros;
+    private static ArrayList<Exemplar> ListaExemplares;
+
+    private static void inicializarDados() {
+        // Inicializa dados de livros e usuários para testes
+        ListaUsuarios.add(Fabrica.cadastrarAlunoGraduacao(123, "João da Silva"));
+        ListaUsuarios.add(Fabrica.cadastrarAlunoPos(456, "Luiz Fernando Rodrigues"));
+        ListaUsuarios.add(Fabrica.cadastrarAlunoGraduacao(789, "Pedro Paulo"));
+        ListaUsuarios.add(Fabrica.cadastrarProfessor(100, "Carlos Lucena"));
+        ListaLivros.add(Fabrica.cadastrarLivro(100, "Engenharia de Software", "AddisonWesley", "Ian Sommervile", "6ª", 2000));
+        ListaExemplares.add(Fabrica.cadastrarExemplar(100, 1, true));
+
+        
     }
 
-    private void inicializarDados() {
-        // Inicializa dados de livros e usuários para testes
+    public static ArrayList<Livro> getListaLivros() {
+        return SistemaBiblioteca.ListaLivros;
     }
 
     public static void main(String[] args) {
-        BibliotecaSistema sistema = BibliotecaSistema.getInstance();
-        sistema.executarComando("emp 123 100");
-        sistema.executarComando("dev 123 100");
-        sistema.executarComando("res 123 100");
-        sistema.executarComando("obs 200 100");
-        sistema.executarComando("liv 100");
-        sistema.executarComando("usu 123");
-        sistema.executarComando("ntf 200");
-        sistema.executarComando("sai");
+        ComandoInvoker invoker = new ComandoInvoker();
+        while (true) {
+            invoker.executarComando();
+        }
     }
 }

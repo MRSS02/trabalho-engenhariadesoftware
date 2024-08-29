@@ -16,6 +16,6 @@ public class ComandoInvoker {
     }
 
     public void executarComando() {
-        GerenciadorIO.getInstance().ProcessarComandos(comandos);
+        GerenciadorIO.getInstance().ProcessarComandos(this.comandos);
     }
 }

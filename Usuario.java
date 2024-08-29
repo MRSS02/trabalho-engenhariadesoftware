@@ -3,13 +3,14 @@ import java.util.List;
 
 
 abstract class Usuario {
-    private String codigo;
+    private int codigo;
+
     private String nome;
     private int tempoEmprestimo;
     private List<Exemplar> LivrosEmprestados = new ArrayList<>();
     private List<Exemplar> LivrosReservados = new ArrayList<>();
 
-    public Usuario(String codigo, String nome, int tempoEmprestimo) {
+    public Usuario(int codigo, String nome, int tempoEmprestimo) {
         this.codigo = codigo;
         this.nome = nome;
         this.tempoEmprestimo = tempoEmprestimo;
@@ -17,6 +18,8 @@ abstract class Usuario {
     }
 
     public abstract boolean podeEmprestar();
+
+    public abstract String getTipoUsuario(); 
     
     public String getNome() {
         return this.nome;

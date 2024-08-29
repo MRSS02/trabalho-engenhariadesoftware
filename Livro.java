@@ -2,23 +2,23 @@ import java.util.ArrayList; // import the ArrayList class
 import java.util.List; // import the List class
 
 class Livro {
-    private String codigo;
+    private int codigo;
     private String titulo;
     private String editora;
     private String autores;
     private String edicao;
-    private int ano;
+    private int anoPublicacao;
     private List<Exemplar> exemplares = new ArrayList<>();
     private List<Usuario> reservas = new ArrayList<>();
     private List<Observer> observadores = new ArrayList<>();
 
-    public Livro(String codigo, String titulo, String editora, String autores, String edicao, int ano) {
+    public Livro(int codigo, String titulo, String editora, String autores, String edicao, int anoPublicacao) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.editora = editora;
         this.autores = autores;
         this.edicao = edicao;
-        this.ano = ano;
+        this.anoPublicacao = anoPublicacao;
     }
 
     public void registrarObservador(Observer observer) {
@@ -35,7 +35,7 @@ class Livro {
 
     // Métodos para gerenciar exemplares e reservas
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
