@@ -7,4 +7,5 @@ class Professor extends Usuario {
     public boolean podeEmprestar() {
         return (this.getTempoEmprestimo() > 0);
     }
+
 }

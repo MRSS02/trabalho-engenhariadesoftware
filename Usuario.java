@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
 abstract class Usuario {
     private String codigo;
     private String nome;
@@ -25,6 +26,14 @@ abstract class Usuario {
         return this.tempoEmprestimo;
     }
 
-
+    public void reservarLivro(Exemplar Exemplar) {
+        LivrosReservados.add(Exemplar);
+    }
+    public void pegarEmprestadoLivro(Exemplar Exemplar) {
+        LivrosEmprestados.add(Exemplar);
+        if (tempoEmprestimo > (Exemplar.getDiasDevolucao())) {
+            tempoEmprestimo = Exemplar.getDiasDevolucao;
+        }
+    }
 
 }

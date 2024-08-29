@@ -48,7 +48,10 @@ public class GerenciadorIO {
          System.out.println("Consulta processada.");
     }
     public void PrintConsultaNotificacao() {
- System.out.println("Consulta processada.");
+        System.out.println("Consulta processada.");
+    }
+    public void PrintSair() {
+        System.out.println("Encerrando programa...");
     }
 
 
