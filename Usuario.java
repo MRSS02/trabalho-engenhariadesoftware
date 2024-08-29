@@ -32,7 +32,7 @@ abstract class Usuario {
     public void pegarEmprestadoLivro(Exemplar Exemplar) {
         LivrosEmprestados.add(Exemplar);
         if (tempoEmprestimo > (Exemplar.getDiasDevolucao())) {
-            tempoEmprestimo = Exemplar.getDiasDevolucao;
+            tempoEmprestimo = Exemplar.getDiasDevolucao();
         }
     }
 
