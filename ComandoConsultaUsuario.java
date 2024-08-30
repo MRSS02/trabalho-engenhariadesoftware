@@ -8,7 +8,7 @@ class ComandoConsultaUsuario implements Comando {
             GerenciadorIO.getInstance().PrintConsultaUsuario("UsuarioNull");
             return;
         }
-        GerenciadorIO.getInstance().PrintEmprestimo("Sucesso!");
+        GerenciadorIO.getInstance().PrintEmprestimo("Sucesso");
         // Implementar lógica de consulta de usuário
     }
 }
