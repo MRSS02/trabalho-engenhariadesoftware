@@ -45,12 +45,13 @@ abstract class Usuario {
     public void reservarLivro(Exemplar exemplar) {
         this.LivrosReservados.add(exemplar);
     }
+
     public void pegarEmprestado(Exemplar exemplar) {
         this.LivrosEmprestados.add(exemplar);
         this.LivrosReservados.remove(exemplar);
     }
     public void devolver(Livro Livro) {
-        Exemplar exemplar = this.getExemplarByCodigo(livro.getCodigo()); 
+        Exemplar exemplar = this.getExemplarByCodigoLivro(livro.getCodigo()); 
         this.LivrosEmprestados.remove(exemplar);
     }
     
@@ -63,5 +64,14 @@ abstract class Usuario {
         return null;
 
     }
+
+    public List<Exemplar> getLivrosReservados() {
+         return this.LivrosReservados;
+    }
+
+    public List<Exemplar> getLivrosEmprestados() {
+         return this.LivrosEmprestados;
+    }
+
 
 }

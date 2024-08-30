@@ -76,9 +76,16 @@ public class GerenciadorIO {
 
         }
     }
-    
-    public void PrintConsultaUsuario() {
+
+    public void PrintConsultaUsuario(String tipoMensagem) {
+        switch (tipoMensagem) {
+        case "UsuarioNull": 
+         System.out.println("O usuário não existe.");
+         break;
+        case "Sucesso":        
          System.out.println("Consulta processada.");
+         break;
+        }
     }
     public void PrintConsultaLivro() {
          System.out.println("Consulta processada.");
