@@ -7,6 +7,7 @@ abstract class Usuario {
 
     private String nome;
     private int tempoEmprestimo;
+    private int tempoEmprestimoBase;
     private List<Exemplar> LivrosEmprestados = new ArrayList<>();
     private List<Exemplar> LivrosReservados = new ArrayList<>();
 
@@ -25,18 +26,27 @@ abstract class Usuario {
         return this.nome;
     }
 
+    public int getCodigo() {
+        return this.codigo;
+    }
+
     public int getTempoEmprestimo() {
         return this.tempoEmprestimo;
+    }
+
+    public int getTempoEmprestimoBase() {
+        return this.tempoEmprestimoBase;
+    }
+
+    public void resetTempoEmprestimo() {
+        this.tempoEmprestimo = this.getTempoEmprestimoBase();
     }
 
     public void reservarLivro(Exemplar Exemplar) {
         LivrosReservados.add(Exemplar);
     }
-    public void pegarEmprestadoLivro(Exemplar Exemplar) {
+    public void pegarEmprestado(Exemplar Exemplar) {
         LivrosEmprestados.add(Exemplar);
-        if (tempoEmprestimo > (Exemplar.getDiasDevolucao())) {
-            tempoEmprestimo = Exemplar.getDiasDevolucao();
-        }
     }
 
 }

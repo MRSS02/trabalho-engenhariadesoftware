@@ -35,8 +35,31 @@ public class GerenciadorIO {
     public void PrintObservacao() {
          System.out.println("Observação processada.");
     }
-    public void PrintEmprestimo() {
-         System.out.println("Emprestimo processado.");
+    public void PrintEmprestimo(String tipoMensagem) {
+        switch (tipoMensagem) {
+         case "UsuarioNull": 
+         System.out.println("O usuário não existe.");
+         break;
+         case "LivroNull":
+         System.out.println("O livro não existe.");
+         break;
+         case "ExemplarNull":
+         System.out.println("O exemplar não existe.");
+         break;
+         case "Devedor":
+         System.out.println("O usuário deve um empréstimo.");
+         break;
+         case "Reservado":
+         System.out.println("O livro está reservado.");
+         break;
+         case "Sucesso":
+         System.out.println("Sucesso!");
+         break;
+         default:
+         System.out.println("Erro desconhecido.");
+
+        }
+         
     }
     public void PrintDevolucao() {
          System.out.println("Devolução processada.");

@@ -6,7 +6,9 @@ class Exemplar {
     private int codigoExemplar;
     private boolean isDisponivel;
     private Livro livro;
-    private Usuario emprestadoPara;
+    private boolean isReservado;
+    private int reservadoPara;    
+    private int emprestadoPara;
     private LocalDate dataEmprestimo;
     private LocalDate dataDevolucaoPrevista;
 
@@ -15,9 +17,9 @@ class Exemplar {
         this.codigoExemplar = codigoExemplar;
         this.isDisponivel = isDisponivel;
         this.livro = null;
-        for(Livro livro : SistemaBiblioteca.getListaLivros()) {
+        for(Livro livro : SistemaBiblioteca.getInstance().getListaLivros()) {
             if(livro.getCodigo() == codigo ) {
-            this.livro = livro;
+                this.livro = livro;
             }
         }
       
@@ -25,6 +27,18 @@ class Exemplar {
 
     public Livro getLivro() {
         return this.livro;
+    }
+
+    public int getCodigo() {
+            return this.codigo;
+    }
+
+    public void setIsReservado(boolean valor) {
+        isReservado = valor;
+    }
+
+    public void setIsReservadoPara(int codigo) {
+        this.reservadoPara = codigo;
     }
 
     public boolean isDisponivel() {
@@ -41,7 +55,8 @@ class Exemplar {
 
     public int getDiasDevolucao() {
        LocalDate epoch = LocalDate.ofEpochDay(0);
-       return (ChronoUnit.DAYS.between(epoch, getDataDevolucaoPrevista()) - ChronoUnit.DAYS.between(epoch, getDataEmprestimo()));
+       return 0;
+       // return (ChronoUnit.DAYS.between(epoch, getDataDevolucaoPrevista()) - ChronoUnit.DAYS.between(epoch, getDataEmprestimo()));
     }
 }
 

@@ -2,11 +2,26 @@ import java.util.ArrayList;
 
 public class SistemaBiblioteca {
 
-    private static ArrayList<Usuario> ListaUsuarios;
-    private static ArrayList<Livro> ListaLivros;
-    private static ArrayList<Exemplar> ListaExemplares;
+    private ArrayList<Usuario> ListaUsuarios;
+    private ArrayList<Livro> ListaLivros;
+    private ArrayList<Exemplar> ListaExemplares;
 
-    private static void inicializarDados() {
+    private static SistemaBiblioteca instance; 
+
+    private SistemaBiblioteca() {
+    
+    }
+
+    public static SistemaBiblioteca getInstance() {
+        if (instance == null) {
+                instance = new SistemaBiblioteca();
+        }
+                return instance;   
+    }
+
+
+
+    private void inicializarDados() {
         // Inicializa dados de livros e usuários para testes
         ListaUsuarios.add(Fabrica.cadastrarAlunoGraduacao(123, "João da Silva"));
         ListaUsuarios.add(Fabrica.cadastrarAlunoPos(456, "Luiz Fernando Rodrigues"));
@@ -18,14 +33,44 @@ public class SistemaBiblioteca {
         
     }
 
-    public static ArrayList<Livro> getListaLivros() {
-        return SistemaBiblioteca.ListaLivros;
+    public ArrayList<Livro> getListaLivros() {
+        return this.ListaLivros;
     }
 
-    public static void main(String[] args) {
-        ComandoInvoker invoker = new ComandoInvoker();
-        while (true) {
-            invoker.executarComando();
-        }
+    public ArrayList<Exemplar> getListaExemplares() {
+        return this.ListaExemplares;
     }
+
+    public ArrayList<Usuario> getListaUsuarios() {
+        return this.ListaUsuarios;
+    }
+
+    public Usuario getUsuarioByCodigo(int codigo) {
+        for(Usuario usuario : this.getListaUsuarios()) {
+            if(usuario.getCodigo() == codigo ) {
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+    public Livro getLivroByCodigo(int codigo) {
+        for(Livro livro : this.getListaLivros()) {
+            if(livro.getCodigo() == codigo ) {
+                return livro;
+            }
+        }
+        return null;
+    }
+
+    public Exemplar getExemplarByCodigoLivro(int codigo) {
+        for(Exemplar exemplar : this.getListaExemplares()) {
+            if(exemplar.getCodigo() == codigo ) {
+                return exemplar;
+            }
+        }
+        return null;
+    }
+
+    
 }
