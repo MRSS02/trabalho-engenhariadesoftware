@@ -46,8 +46,12 @@ abstract class Usuario {
         LivrosReservados.add(Exemplar);
     }
     
-    public List<Exemplar> getLivrosReservados {
+    public List<Exemplar> getLivrosReservados() {
          return this.LivrosReservados;
+    }
+
+    public List<Exemplar> getLivrosEmprestados() {
+         return this.LivrosEmprestados;
     }
   
     public void pegarEmprestado(Exemplar Exemplar) {
