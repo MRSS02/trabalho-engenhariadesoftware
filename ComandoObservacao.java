@@ -1,6 +1,6 @@
 class ComandoObservacao implements Comando {
     public void executar(String[] args) {
-       GerenciadorObserver.inscrever(Fabrica.cadastrarObservadorProfessor(args[1], args[2]));
+       GerenciadorObserver.getInstance().inscrever(Fabrica.cadastrarObservadorProfessor(Integer.parseInt(args[1]), Integer.parseInt(args[1])));
        GerenciadorIO.getInstance().PrintAdicionadoObservador("Sucesso");
     }
 }

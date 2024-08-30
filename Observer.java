@@ -1,3 +1,3 @@
 interface Observer {
-    void update(String nomeLivro);
+    void update(int codigoLivro);
 }

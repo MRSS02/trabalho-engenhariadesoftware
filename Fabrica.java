@@ -15,8 +15,8 @@ public class Fabrica {
     public static Livro cadastrarLivro(int codigo, String titulo, String editora, String autores, String edicao, int anoPublicacao) {
         return new Livro(codigo, titulo, editora, autores, edicao, anoPublicacao); 
     }
-    public static Observer cadastrarObservadorProfessor(int codigoProfessor, int codigoLivro) {
-        return new ObserverProfessor(codigoProfessor, codigoLivro); 
+    public static Observer cadastrarObservadorProfessor(String nomeProfessor, String nomeLivro, int codigoLivro) {
+        return new ObserverProfessor(nomeProfessor, nomeLivro, codigoLivro); 
     }
     
     

@@ -1,6 +1,5 @@
 class ComandoReserva implements Comando {
     public void executar(String[] args) {
-        private int vezesrezevado;
         SistemaBiblioteca biblioteca = SistemaBiblioteca.getInstance();
         Usuario usuario = biblioteca.getUsuarioByCodigo(Integer.parseInt(args[1]));
         Livro livro = biblioteca.getLivroByCodigo(Integer.parseInt(args[2]));
@@ -13,27 +12,19 @@ class ComandoReserva implements Comando {
             GerenciadorIO.getInstance().PrintReserva("LivroNull");
             return;
         }
-        if (exemplar == null) {
-            GerenciadorIO.getInstance().PrintReserva("ExemplarNull");
+        if (!exemplar.isDisponivel()) {
+            GerenciadorIO.getInstance().PrintReserva("ExemplarNaoDisponivel");
             return;
         }
-        if (!usuario.isProfessor() && exemplar.isReserved() && !exemplar.isReservedTo(usuario.codigo)) {
-            GerenciadorIO.getInstance().PrintReserva("Reservado");
-            return;
-        }
-        if (usuario.LivrosReservados.Size() ==)
         
         usuario.reservarLivro(exemplar);
         exemplar.setIsReservado(true);
         exemplar.setIsReservadoPara(usuario.getCodigo());
+        livro.adicionarReserva(exemplar);
         
-        GerenciadorIO.getInstance().PrintReserva("Sucesso!");
+        GerenciadorIO.getInstance().PrintReserva("Sucesso");
 
         
-    }
-}
-        // Implementar lógica de reserva
-        GerenciadorIO.getInstance().PrintReserva();
     }
 }
 

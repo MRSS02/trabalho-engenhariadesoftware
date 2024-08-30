@@ -50,9 +50,22 @@ abstract class Usuario {
         this.LivrosEmprestados.add(exemplar);
         this.LivrosReservados.remove(exemplar);
     }
-    public void devolver(Livro Livro) {
+    public void devolver(Livro livro) {
         Exemplar exemplar = this.getExemplarByCodigoLivro(livro.getCodigo()); 
         this.LivrosEmprestados.remove(exemplar);
+        if (LivrosEmprestados.size() == 0) {
+            this.resetTempoEmprestimo();
+        } else {
+            int tempoEmprestimo = this.getTempoEmprestimoBase();
+            for(Exemplar exemplarIterator : this.LivrosEmprestados) {
+            int diasDevolucao = exemplar.getDiasDevolucao();
+            if(diasDevolucao < tempoEmprestimo ) {
+                tempoEmprestimo = diasDevolucao;
+            }
+            }
+            this.tempoEmprestimo = tempoEmprestimo;
+
+        }
     }
     
     public Exemplar getExemplarByCodigoLivro(int codigo) {

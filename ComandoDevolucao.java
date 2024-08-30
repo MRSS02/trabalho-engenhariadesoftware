@@ -14,6 +14,7 @@ class ComandoDevolucao implements Comando {
         }
         Exemplar exemplar = usuario.getExemplarByCodigoLivro(livro.getCodigo());
         exemplar.setIsReservado(false);
+        livro.removerReserva(exemplar);
         usuario.devolver(livro);
         GerenciadorIO.getInstance().PrintDevolucao("Sucesso");
     }

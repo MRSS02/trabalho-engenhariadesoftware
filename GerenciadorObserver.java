@@ -27,9 +27,9 @@ public class GerenciadorObserver {
          observadores.remove(observador);
     }
 
-    public void notificar(string titulo) {
+    public void notificar(int codigo) {
         for (Observer observador : observadores) {
-            observador.update(titulo);
+            observador.update(codigo);
         }
     }
 }

@@ -30,20 +30,34 @@ class Exemplar {
     }
 
     public int getCodigo() {
-            return this.codigo;
+        return this.codigo;
     }
 
+    public void setIsDisponivel(boolean valor) {
+        this.isDisponivel = valor;
+    }
+
+
     public void setIsReservado(boolean valor) {
-        isReservado = valor;
+        this.isReservado = valor;
     }
 
     public void setIsReservadoPara(int codigo) {
         this.reservadoPara = codigo;
     }
 
+    public boolean isReservadoPara(int codigo) {
+        return (this.reservadoPara == codigo);
+    }
+
     public boolean isDisponivel() {
         return this.isDisponivel;
     }
+
+    public boolean isReservado() {
+        return this.isReservado;
+    }
+
 
     public LocalDate getDataEmprestimo() {
         return dataEmprestimo;
@@ -55,8 +69,7 @@ class Exemplar {
 
     public int getDiasDevolucao() {
        LocalDate epoch = LocalDate.ofEpochDay(0);
-       return 0;
-       // return (ChronoUnit.DAYS.between(epoch, getDataDevolucaoPrevista()) - ChronoUnit.DAYS.between(epoch, getDataEmprestimo()));
+       return (ChronoUnit.DAYS.between(getDataDevolucaoPrevista(), getDataEmprestimo()));
     }
 }
 

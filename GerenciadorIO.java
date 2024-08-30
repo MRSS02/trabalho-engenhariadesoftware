@@ -85,10 +85,36 @@ public class GerenciadorIO {
         case "Sucesso":        
          System.out.println("Consulta processada.");
          break;
+        default:
+         System.out.println("Erro desconhecido.");
+
         }
     }
-    public void PrintConsultaLivro() {
-         System.out.println("Consulta processada.");
+
+    public void PrintAdicionadoObservador(String tipoMensagem) {
+        switch (tipoMensagem) {
+        case "Sucesso":        
+             System.out.println("Observador adicionado.");
+         break;
+        default:
+         System.out.println("Erro desconhecido.");
+
+        }
+    }
+
+
+    public void PrintConsultaLivro(String tipoMensagem) {
+        switch (tipoMensagem) {
+         case "LivroNull":
+         System.out.println("O livro não existe.");
+         break;
+         case "Sucesso":
+         System.out.println("Sucesso!");
+         break;
+         default:
+         System.out.println("Erro desconhecido.");
+        }
+         
     }
     public void PrintConsultaNotificacao() {
         System.out.println("Consulta processada.");
