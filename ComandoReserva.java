@@ -1,5 +1,6 @@
 class ComandoReserva implements Comando {
     public void executar(String[] args) {
+        private int vezesrezevado;
         SistemaBiblioteca biblioteca = SistemaBiblioteca.getInstance();
         Usuario usuario = biblioteca.getUsuarioByCodigo(Integer.parseInt(args[1]));
         Livro livro = biblioteca.getLivroByCodigo(Integer.parseInt(args[2]));
@@ -20,10 +21,12 @@ class ComandoReserva implements Comando {
             GerenciadorIO.getInstance().PrintReserva("Reservado");
             return;
         }
+        if (usuario.LivrosReservados.Size() ==)
         
-        usuario.pegarEmprestado(exemplar);
+        usuario.reservarLivro(exemplar);
         exemplar.setIsReservado(true);
         exemplar.setIsReservadoPara(usuario.getCodigo());
+        
         GerenciadorIO.getInstance().PrintReserva("Sucesso!");
 
         
