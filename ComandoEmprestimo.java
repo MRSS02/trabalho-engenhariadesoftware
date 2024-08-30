@@ -26,7 +26,7 @@ class ComandoEmprestimo implements Comando {
         usuario.pegarEmprestado(exemplar);
         exemplar.setIsReservado(true);
         exemplar.setIsReservadoPara(usuario.getCodigo());
-        GerenciadorIO.getInstance().PrintEmprestimo("Sucesso!");
+        GerenciadorIO.getInstance().PrintEmprestimo("Sucesso");
 
         
     }

@@ -44,7 +44,7 @@ public class GerenciadorIO {
          System.out.println("O livro não existe.");
          break;
          case "ExemplarNull":
-         System.out.println("O exemplar não existe.");
+         System.out.println("Um exemplar não está disponível.");
          break;
          case "Devedor":
          System.out.println("O usuário deve um empréstimo.");
@@ -57,13 +57,26 @@ public class GerenciadorIO {
          break;
          default:
          System.out.println("Erro desconhecido.");
-
         }
          
     }
-    public void PrintDevolucao() {
-         System.out.println("Devolução processada.");
+    public void PrintDevolucao(String tipoMensagem) {
+         switch (tipoMensagem) {
+         case "UsuarioNull": 
+         System.out.println("O usuário não existe.");
+         break;
+         case "LivroNull":
+         System.out.println("O livro não existe.");
+         break;
+         case "Sucesso":
+         System.out.println("Sucesso!");
+         break;
+         default:
+         System.out.println("Erro desconhecido.");
+
+        }
     }
+    
     public void PrintConsultaUsuario() {
          System.out.println("Consulta processada.");
     }
@@ -75,6 +88,10 @@ public class GerenciadorIO {
     }
     public void PrintSair() {
         System.out.println("Encerrando programa...");
+    }
+    public void PrintNotificacaoProfessor(String nomeObservador, String nomeLivro) {
+        System.out.println("Professor " + nomeObservador + ", o livro" + nomeLivro + " foi reservado mais de uma vez simultaneamente");
+
     }
 
 

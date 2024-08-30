@@ -26,10 +26,8 @@ class Livro {
     }
 
     public void notificarObservadores() {
-        if (reservas.size() > 2) {
-            for (Observer observer : observadores) {
-                observer.update();
-            }
+        if (this.reservas.size() > 2) {
+            GerenciadorObserver.getInstance().notificar(this.getTitulo());  
         }
     }
 

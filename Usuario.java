@@ -42,11 +42,26 @@ abstract class Usuario {
         this.tempoEmprestimo = this.getTempoEmprestimoBase();
     }
 
-    public void reservarLivro(Exemplar Exemplar) {
-        LivrosReservados.add(Exemplar);
+    public void reservarLivro(Exemplar exemplar) {
+        this.LivrosReservados.add(exemplar);
     }
-    public void pegarEmprestado(Exemplar Exemplar) {
-        LivrosEmprestados.add(Exemplar);
+    public void pegarEmprestado(Exemplar exemplar) {
+        this.LivrosEmprestados.add(exemplar);
+        this.LivrosReservados.remove(exemplar);
+    }
+    public void devolver(Livro Livro) {
+        Exemplar exemplar = this.getExemplarByCodigo(livro.getCodigo()); 
+        this.LivrosEmprestados.remove(exemplar);
+    }
+    
+    public Exemplar getExemplarByCodigoLivro(int codigo) {
+        for(Exemplar exemplar : this.LivrosEmprestados) {
+            if(exemplar.getCodigo() == codigo ) {
+                return exemplar;
+            }
+        }
+        return null;
+
     }
 
 }

@@ -2,9 +2,10 @@ import java.util.ArrayList;
 
 public class SistemaBiblioteca {
 
-    private ArrayList<Usuario> ListaUsuarios;
-    private ArrayList<Livro> ListaLivros;
-    private ArrayList<Exemplar> ListaExemplares;
+    private ArrayList<Usuario> ListaUsuarios = new ArrayList<>();
+    private ArrayList<Livro> ListaLivros = new ArrayList<>();
+    private ArrayList<Exemplar> ListaExemplares = new ArrayList<>();
+    private int numeroReservas = 0;
 
     private static SistemaBiblioteca instance; 
 
@@ -61,6 +62,10 @@ public class SistemaBiblioteca {
             }
         }
         return null;
+    }
+
+    public int getNumeroReservas() {
+        return this.numeroReservas;
     }
 
     public Exemplar getExemplarByCodigoLivro(int codigo) {

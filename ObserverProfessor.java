@@ -1,8 +1,10 @@
 class ObserverProfessor implements Observer {
-    private int notificacoesRecebidas = 0;
+    private String nomeObservador;
+    private String nomeLivro;
 
-    public void update() {
-        notificacoesRecebidas++;
-        System.out.println("Professor foi notificado. Total de notificações: " + notificacoesRecebidas);
+    public void update(String nomeLivro) {
+        if (this.nomeLivro == nomeLivro) {
+            GerenciadorIO.PrintNotificacaoProfessor(nomeObservador, nomeLivro);
+        }
     }
 }
