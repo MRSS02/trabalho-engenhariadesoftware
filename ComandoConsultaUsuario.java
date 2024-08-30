@@ -8,6 +8,8 @@ class ComandoConsultaUsuario implements Comando {
             GerenciadorIO.getInstance().PrintConsultaUsuario("UsuarioNull");
             return;
         }
+        System.out.println(usuario.getLivrosReservados());
+        System.out.println(usuario.getLivrosEmprestados());
         GerenciadorIO.getInstance().PrintEmprestimo("Sucesso");
         // Implementar lógica de consulta de usuário
     }
