@@ -10,6 +10,7 @@ class Exemplar {
     private int reservadoPara;    
     private int emprestadoPara;
     private LocalDate dataEmprestimo;
+    private LocalDate dataReservada;
     private LocalDate dataDevolucaoPrevista;
 
     public Exemplar(int codigo, int codigoExemplar, boolean isDisponivel) {
@@ -59,6 +60,14 @@ class Exemplar {
     }
 
 
+    public LocalDate getDataReservada() {
+        return dataReservada;
+    }
+
+     public void setDataReservada(LocalDate dataReservada) {
+        this.dataReservada = dataReservada;
+    }
+
     public LocalDate getDataEmprestimo() {
         return dataEmprestimo;
     }
@@ -80,4 +89,3 @@ class Exemplar {
        return ((int) ChronoUnit.DAYS.between(getDataDevolucaoPrevista(), getDataEmprestimo()));
     }
 }
-
