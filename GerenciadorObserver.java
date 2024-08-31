@@ -29,7 +29,9 @@ public class GerenciadorObserver {
 
     public void notificar(int codigo) {
         for (Observer observador : observadores) {
-            observador.update(codigo);
+            if (observador.getCodigoLivro() == codigo) {
+                observador.update(codigo);
+            }
         }
     }
 }

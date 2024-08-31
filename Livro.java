@@ -31,6 +31,22 @@ class Livro {
         }
     }
 
+    public int getQuantidadeReservas() {
+        return this.reservas.size();
+    }
+
+    public List<Exemplar> getExemplares() {
+        return this.exemplares;
+    }
+
+    public List<Exemplar> getReservas() {
+        return this.reservas;
+    }
+
+    public List<Observer> getObservadores() {
+        return this.observadores;
+    }
+
     public void adicionarReserva(Exemplar exemplar) {
         this.reservas.add(exemplar);
         this.notificarObservadores();

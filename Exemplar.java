@@ -67,9 +67,17 @@ class Exemplar {
         return dataDevolucaoPrevista;
     }
 
+    public void setDataEmprestimo(LocalDate dataEmprestimo) {
+        this.dataEmprestimo = dataEmprestimo;
+    }
+
+    public void setDataDevolucaoPrevista(LocalDate dataDevolucaoPrevista) {
+        this.dataDevolucaoPrevista = dataDevolucaoPrevista;
+    }
+
     public int getDiasDevolucao() {
        LocalDate epoch = LocalDate.ofEpochDay(0);
-       return (ChronoUnit.DAYS.between(getDataDevolucaoPrevista(), getDataEmprestimo()));
+       return ((int) ChronoUnit.DAYS.between(getDataDevolucaoPrevista(), getDataEmprestimo()));
     }
 }
 

@@ -12,10 +12,12 @@ class ObserverProfessor implements Observer {
     }
 
     public void update(int codigoLivro) {
-        if (this.codigoLivro == codigoLivro) {
             this.vezesNotificado++;
             GerenciadorIO.getInstance().PrintNotificacaoProfessor(nomeObservador, nomeLivro);
-        }
+    }
+
+    public int getCodigoLivro() {
+        return this.codigoLivro;
     }
 
 }

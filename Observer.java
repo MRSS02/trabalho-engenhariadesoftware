@@ -1,3 +1,4 @@
 interface Observer {
-    void update(int codigoLivro);
+    public void update(int codigoLivro);
+    public int getCodigoLivro();
 }

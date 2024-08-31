@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 class ComandoEmprestimo implements Comando {
     public void executar(String[] args) {
         SistemaBiblioteca biblioteca = SistemaBiblioteca.getInstance();
@@ -24,6 +26,8 @@ class ComandoEmprestimo implements Comando {
             return;
         }
         usuario.pegarEmprestado(exemplar);
+        exemplar.setDataEmprestimo(LocalDate.now());
+        exemplar.setDataDevolucaoPrevista(LocalDate.now().plusDays(usuario.getTempoEmprestimoBase()));
         exemplar.setIsReservado(false);
         exemplar.setIsDisponivel(false);
         GerenciadorIO.getInstance().PrintEmprestimo("Sucesso");

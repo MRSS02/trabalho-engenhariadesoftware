@@ -15,6 +15,7 @@ abstract class Usuario {
         this.codigo = codigo;
         this.nome = nome;
         this.tempoEmprestimo = tempoEmprestimo;
+        this.tempoEmprestimoBase = tempoEmprestimo;
 
     }
 
