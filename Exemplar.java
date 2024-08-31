@@ -89,3 +89,8 @@ class Exemplar {
        return ((int) ChronoUnit.DAYS.between(getDataDevolucaoPrevista(), getDataEmprestimo()));
     }
 }
+     public Usuario getUsuarioReserva() {
+        SistemaBiblioteca biblioteca = SistemaBiblioteca.getInstance();
+        return biblioteca.getUsuarioByCodigo(this.reservadoPara);
+    }
+}
