@@ -2,24 +2,24 @@ import java.time.LocalDate;
 
 class Reserva {
     
-    private int codigoExemplar;
+    private int codigoLivro;
     private LocalDate dataSolicitacao;
     
-    public Reserva(int codigoExemplar, LocalDate dataSolicitacao) {
-        this.codigoExemplar = codigoExemplar;
+    public Reserva(int codigoLivro, LocalDate dataSolicitacao) {
+        this.codigoLivro = codigoLivro;
         this.dataSolicitacao = dataSolicitacao;
     }
 
-    public int getCodigoExemplar() {
-        return this.codigoExemplar;
+    public int getCodigoLivro() {
+        return this.codigoLivro;
     }
 
     public LocalDate getDataSolicitacao() {
         return this.dataSolicitacao;
     }
 
-    public void setCodigoExemplar(int codigoExemplar) {
-        this.codigoExemplar = codigoExemplar;
+    public void setCodigoLivro(int codigoLivro) {
+        this.codigoLivro = codigoLivro;
     }
 
     public void setDataSolicitacao(LocalDate dataSolicitacao) {

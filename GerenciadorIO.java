@@ -175,15 +175,15 @@ public class GerenciadorIO {
 
     }
 
-    public void PrintLivrosReservados(List<Exemplar> livrosReservados) {
+    public void PrintLivrosReservados(List<Reserva> livrosReservados) {
     if (livrosReservados.isEmpty()) {
         System.out.println("Nenhum livro reservado.");
     } else {
         System.out.println("Livros reservados:");
-        for (Exemplar reservado : livrosReservados) {
-            Livro livro = reservado.getLivro();
+        for (Reserva reserva : livrosReservados) {
+            Livro livro = SistemaBiblioteca.getInstance().getLivroByCodigo(reserva.getCodigoLivro());
             System.out.println("Título: " + livro.getTitulo());
-            System.out.println("Data Reservada: " + reservado.getDataReservada() + "\n");
+            System.out.println("Data Reservada: " + reserva.getDataSolicitacao() + "\n");
         }
     }
 }

@@ -47,6 +47,8 @@ abstract class Usuario {
 
     public void reservarLivro(Exemplar exemplar) {
         this.livrosReservados.add(exemplar);
+        this.historicoReservas.add(Fabrica.cadastrarReserva(exemplar.getCodigoLivro(), 
+                    LocalDate.now()));
     }
 
     public void pegarEmprestado(Exemplar exemplar) {

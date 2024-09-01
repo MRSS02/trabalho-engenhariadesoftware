@@ -24,6 +24,10 @@ public class Fabrica {
     public static Emprestimo cadastrarEmprestimo(int codigoLivro, LocalDate dataEmprestimo) {
         return new Emprestimo(codigoLivro, dataEmprestimo);
     }
+
+    public static Reserva cadastrarReserva(int codigoLivro, LocalDate dataReserva) {
+        return new Reserva(codigoLivro, dataReserva);
+    }
     
     
 }
