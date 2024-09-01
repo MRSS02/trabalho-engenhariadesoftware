@@ -1,5 +1,4 @@
 class ComandoConsultaLivro implements Comando {
-    @Override
     public void executar(String[] args) {
         SistemaBiblioteca biblioteca = SistemaBiblioteca.getInstance();
         Usuario usuario = biblioteca.getUsuarioByCodigo(Integer.parseInt(args[1]));
@@ -17,6 +16,8 @@ class ComandoConsultaLivro implements Comando {
             // Exibir nomes dos usuários que fizeram reservas, se houver
             if (quantidadeReservas > 0) {
                 gerenciadorIO.PrintConsultaLivro("QuantidadeReservas", usuario, livro);
+            } else {
+                gerenciadorIO.PrintConsultaLivro("Sem reservas", usuario, livro);
             }
 
         // Exibir informações dos exemplares

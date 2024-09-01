@@ -1,5 +1,5 @@
-import java.util.ArrayList; // import the ArrayList class
-import java.util.List; // import the List class
+import java.util.ArrayList; 
+import java.util.List; 
 
 class Livro {
     private int codigo;

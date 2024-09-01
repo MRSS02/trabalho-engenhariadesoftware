@@ -13,10 +13,11 @@ class Exemplar {
     private LocalDate dataReservada;
     private LocalDate dataDevolucaoPrevista;
 
-    public Exemplar(int codigo, int codigoExemplar, boolean isDisponivel) {
+    public Exemplar(int codigo, int codigoExemplar) {
         this.codigo = codigo;
         this.codigoExemplar = codigoExemplar;
-        this.isDisponivel = isDisponivel;
+        this.isDisponivel = true;
+        this.isReservado = false;
         this.livro = null;
         for(Livro livro : SistemaBiblioteca.getInstance().getListaLivros()) {
             if(livro.getCodigo() == codigo ) {

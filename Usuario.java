@@ -8,8 +8,8 @@ abstract class Usuario {
     private String nome;
     private int tempoEmprestimo;
     private int tempoEmprestimoBase;
-    private List<Exemplar> LivrosEmprestados = new ArrayList<>();
-    private List<Exemplar> LivrosReservados = new ArrayList<>();
+    private List<Exemplar> livrosEmprestados = new ArrayList<>();
+    private List<Exemplar> livrosReservados = new ArrayList<>();
 
     public Usuario(int codigo, String nome, int tempoEmprestimo) {
         this.codigo = codigo;
@@ -44,21 +44,21 @@ abstract class Usuario {
     }
 
     public void reservarLivro(Exemplar exemplar) {
-        this.LivrosReservados.add(exemplar);
+        this.livrosReservados.add(exemplar);
     }
 
     public void pegarEmprestado(Exemplar exemplar) {
-        this.LivrosEmprestados.add(exemplar);
-        this.LivrosReservados.remove(exemplar);
+        this.livrosEmprestados.add(exemplar);
+        this.livrosReservados.remove(exemplar);
     }
     public void devolver(Livro livro) {
         Exemplar exemplar = this.getExemplarByCodigoLivro(livro.getCodigo()); 
-        this.LivrosEmprestados.remove(exemplar);
-        if (LivrosEmprestados.size() == 0) {
+        this.livrosEmprestados.remove(exemplar);
+        if (livrosEmprestados.size() == 0) {
             this.resetTempoEmprestimo();
         } else {
             int tempoEmprestimo = this.getTempoEmprestimoBase();
-            for(Exemplar exemplarIterator : this.LivrosEmprestados) {
+            for(Exemplar exemplarIterator : this.livrosEmprestados) {
             int diasDevolucao = exemplar.getDiasDevolucao();
             if(diasDevolucao < tempoEmprestimo ) {
                 tempoEmprestimo = diasDevolucao;
@@ -70,7 +70,7 @@ abstract class Usuario {
     }
     
     public Exemplar getExemplarByCodigoLivro(int codigo) {
-        for(Exemplar exemplar : this.LivrosEmprestados) {
+        for(Exemplar exemplar : this.livrosEmprestados) {
             if(exemplar.getCodigo() == codigo ) {
                 return exemplar;
             }
@@ -79,12 +79,16 @@ abstract class Usuario {
 
     }
 
+    public int getQuantidadeReservas() {
+        return this.livrosReservados.size();
+    }
+
     public List<Exemplar> getLivrosReservados() {
-         return this.LivrosReservados;
+         return this.livrosReservados;
     }
 
     public List<Exemplar> getLivrosEmprestados() {
-         return this.LivrosEmprestados;
+         return this.livrosEmprestados;
     }
 
 

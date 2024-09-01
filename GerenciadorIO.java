@@ -1,4 +1,5 @@
 import java.util.Map;
+import java.util.List;
 
 public class GerenciadorIO {
 
@@ -27,12 +28,31 @@ public class GerenciadorIO {
         }
     }
 
-    // TODO: Implementar mensagens coerentes
+    public void PrintReserva(String tipoMensagem, Usuario usuario, Livro livro) {
+        switch (tipoMensagem) {
+            case "UsuarioNull": 
+                System.out.println("O usuário não existe.");
+                break;
+            case "LivroNull":
+                System.out.println("O livro não existe.");
+                break;
+            case "ExemplarNaoDisponivel":
+                System.out.println("Um exemplar não está disponível.");
+                break;
+            case "MuitasReservas":
+                System.out.println("O usuário" + usuario.getQuantidadeReservas() 
+                        + "já possui três reservas, a quantidade máxima.");
+                break;
 
-    public void PrintReserva(Usuario usuario, Livro livro) {
-        System.out.println("Livro \"" + livro.getTitulo() + 
+            case "Sucesso":
+                System.out.println("Livro \"" + livro.getTitulo() + 
                 " reservado para " + usuario.getNome());
-    }
+                break;
+            default:
+                System.out.println("Erro desconhecido.");
+        }
+
+            }
     public void PrintObservacao(Usuario usuario, Livro livro) {
         System.out.println("A partr de agora " + usuario.getNome() 
                 + " será notificado quando houver múltiplas reservas simultâneas do livro "
@@ -46,7 +66,7 @@ public class GerenciadorIO {
             case "LivroNull":
                 System.out.println("O livro não existe.");
                 break;
-            case "ExemplarNull":
+            case "ExemplarNaoDisponivel":
                 System.out.println("Um exemplar não está disponível.");
                 break;
             case "Devedor":
@@ -109,7 +129,9 @@ public class GerenciadorIO {
                 System.out.println("O livro não existe.");
                 break;
             case "QuantidadeReservas":
-                System.out.println("Usuários que realizaram reservas:");
+                System.out.println("Título do livro: " + livro.getTitulo() + 
+                        "\nQuantidade de reservas:" + livro.getQuantidadeReservas()
+                        + "Usuários que realizaram reservas:");
                 for (Exemplar reserva : livro.getReservas()) {
                     Usuario usuarioReserva = reserva.getUsuarioReserva();
                     if (usuarioReserva != null) {
@@ -117,6 +139,9 @@ public class GerenciadorIO {
                     }
                 } 
                 break;
+            case "SemReservas":
+                System.out.println("Não há reservas para o livro " + livro.getTitulo());
+            break;
             default:
                 System.out.println("Erro desconhecido.");
         }
@@ -161,5 +186,31 @@ public class GerenciadorIO {
 
     }
 
+    public void PrintLivrosReservados(List<Exemplar> livrosReservados) {
+    if (livrosReservados.isEmpty()) {
+        System.out.println("Nenhum livro reservado.");
+    } else {
+        System.out.println("Livros reservados:");
+        for (Exemplar reservado : livrosReservados) {
+            Livro livro = reservado.getLivro();
+            System.out.println("Título: " + livro.getTitulo());
+            System.out.println("Data Reservada: " + reservado.getDataReservada() + "\n");
+        }
+    }
+}
+
+    public void PrintLivrosEmprestados(List<Exemplar> livrosEmprestados) {
+        if (livrosEmprestados.isEmpty()) {
+            System.out.println("Nenhum livro emprestado.");
+        } else {
+            System.out.println("Livros emprestados:");
+            for (Exemplar emprestado : livrosEmprestados) {
+                Livro livro = emprestado.getLivro();
+                System.out.println("Título: " + livro.getTitulo());
+                System.out.println("Data de Empréstimo: " + emprestado.getDataEmprestimo());
+                System.out.println("Data Prevista para Devolução: " + emprestado.getDataDevolucaoPrevista());
+            }
+        }
+    }
 
 }
