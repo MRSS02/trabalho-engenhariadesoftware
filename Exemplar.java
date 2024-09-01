@@ -34,13 +34,12 @@ class Exemplar {
         return this.codigo;
     }
 
-    public void setIsDisponivel(boolean valor) {
-        this.isDisponivel = valor;
+    public void setIsDisponivel(boolean isDisponivel) {
+        this.isDisponivel = isDisponivel;
     }
 
-
-    public void setIsReservado(boolean valor) {
-        this.isReservado = valor;
+    public void setIsReservado(boolean isReservado) {
+        this.isReservado = isReservado;
     }
 
     public void setIsReservadoPara(int codigo) {
@@ -88,9 +87,14 @@ class Exemplar {
        LocalDate epoch = LocalDate.ofEpochDay(0);
        return ((int) ChronoUnit.DAYS.between(getDataDevolucaoPrevista(), getDataEmprestimo()));
     }
-}
-     public Usuario getUsuarioReserva() {
+    public Usuario getUsuarioReserva() {
         SistemaBiblioteca biblioteca = SistemaBiblioteca.getInstance();
         return biblioteca.getUsuarioByCodigo(this.reservadoPara);
     }
+    public Usuario getUsuarioEmprestimo() {
+        SistemaBiblioteca biblioteca = SistemaBiblioteca.getInstance();
+        return biblioteca.getUsuarioByCodigo(this.emprestadoPara);
+    }
+
+
 }

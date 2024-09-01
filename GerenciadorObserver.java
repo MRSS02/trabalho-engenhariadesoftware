@@ -27,6 +27,17 @@ public class GerenciadorObserver {
          observadores.remove(observador);
     }
 
+    public Observer getObservadorByCodigo(int codigo) {
+        for (Observer observador : observadores) {
+            if (observador.getCodigoUsuario() == codigo) {
+                return observador;
+            }
+        }
+
+        return null;
+
+    }
+
     public void notificar(int codigo) {
         for (Observer observador : observadores) {
             if (observador.getCodigoLivro() == codigo) {

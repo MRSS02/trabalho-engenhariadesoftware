@@ -31,7 +31,7 @@ class ComandoConsultaUsuario implements Comando {
                     Livro emprestado2 = emprestado.getLivro();
                     System.out.println(emprestado2.getTitulo());
                     System.out.println(emprestado.getDataEmprestimo());
-                    System.out.println(emprestado.getDataDevolucaoPrevista())
+                    System.out.println(emprestado.getDataDevolucaoPrevista());
                 }
             }
         
