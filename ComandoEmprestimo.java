@@ -21,7 +21,7 @@ class ComandoEmprestimo implements Comando {
         if (usuario.getTempoEmprestimo() <= 0) {
             GerenciadorIO.getInstance().PrintEmprestimo("Devedor");
         }
-        if (!usuario.getTipoUsuario() == "Professor" && exemplar.isReservado() && !exemplar.isReservadoPara(usuario.getCodigo())) {
+        if (!(usuario.getTipoUsuario() == "Professor") && exemplar.isReservado() && !exemplar.isReservadoPara(usuario.getCodigo())) {
             GerenciadorIO.getInstance().PrintEmprestimo("Reservado");
             return;
         }

@@ -100,17 +100,6 @@ public class GerenciadorIO {
         }
     }
 
-    public void PrintConsultaUsuario(String tipoMensagem) {
-        switch (tipoMensagem) {
-            case "UsuarioNull": 
-                System.out.println("O usuário não existe.");
-                break;
-            default:
-                System.out.println("Erro desconhecido.");
-
-        }
-    }
-
     public void PrintAdicionadoObservador(String tipoMensagem) {
         switch (tipoMensagem) {
             case "Sucesso":        
@@ -151,7 +140,7 @@ public class GerenciadorIO {
     public void PrintConsultaExemplares(Usuario usuario, Livro livro) {
         System.out.println("Exemplares:");
         for (Exemplar exemplar : livro.getExemplares()) {
-            System.out.println("Código do Exemplar: " + exemplar.getCodigo());
+            System.out.println("Código do Exemplar: " + exemplar.getCodigoExemplar());
             if (exemplar.isReservado()) {
                 System.out.println("Status: Reservado");
                 Usuario usuarioReserva = exemplar.getUsuarioReserva();
@@ -199,16 +188,20 @@ public class GerenciadorIO {
     }
 }
 
-    public void PrintLivrosEmprestados(List<Exemplar> livrosEmprestados) {
+    public void PrintLivrosEmprestados(List<Emprestimo> livrosEmprestados) {
         if (livrosEmprestados.isEmpty()) {
             System.out.println("Nenhum livro emprestado.");
         } else {
             System.out.println("Livros emprestados:");
-            for (Exemplar emprestado : livrosEmprestados) {
-                Livro livro = emprestado.getLivro();
+            for (Emprestimo emprestimo : livrosEmprestados) {
+                Livro livro = SistemaBiblioteca.getInstance().getLivroByCodigo(emprestimo.getCodigoLivro());
                 System.out.println("Título: " + livro.getTitulo());
-                System.out.println("Data de Empréstimo: " + emprestado.getDataEmprestimo());
-                System.out.println("Data Prevista para Devolução: " + emprestado.getDataDevolucaoPrevista());
+                System.out.println("Data de Empréstimo: " + emprestimo.getDataEmprestimo());
+                if (emprestimo.isFinalizado()) {
+                    System.out.println("Data que fora relizada a devolução: " + emprestimo.getDataDevolucao());
+                } else {
+                    System.out.println("Data Prevista para devolução: " + emprestimo.getDataDevolucao());
+                }
             }
         }
     }

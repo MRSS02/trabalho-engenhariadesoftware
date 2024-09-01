@@ -2,7 +2,7 @@ import java.time.temporal.ChronoUnit;
 import java.time.LocalDate;
 
 class Exemplar {
-    private int codigo;
+    private int codigoLivro;
     private int codigoExemplar;
     private boolean isDisponivel;
     private Livro livro;
@@ -13,14 +13,14 @@ class Exemplar {
     private LocalDate dataReservada;
     private LocalDate dataDevolucaoPrevista;
 
-    public Exemplar(int codigo, int codigoExemplar) {
-        this.codigo = codigo;
+    public Exemplar(int codigoLivro, int codigoExemplar) {
+        this.codigoLivro = codigoLivro;
         this.codigoExemplar = codigoExemplar;
         this.isDisponivel = true;
         this.isReservado = false;
         this.livro = null;
         for(Livro livro : SistemaBiblioteca.getInstance().getListaLivros()) {
-            if(livro.getCodigo() == codigo ) {
+            if(livro.getCodigo() == codigoLivro ) {
                 this.livro = livro;
             }
         }
@@ -31,8 +31,12 @@ class Exemplar {
         return this.livro;
     }
 
-    public int getCodigo() {
-        return this.codigo;
+    public int getCodigoLivro() {
+        return this.codigoLivro;
+    }
+
+    public int getCodigoExemplar() {
+        return this.codigoExemplar;
     }
 
     public void setIsDisponivel(boolean isDisponivel) {
@@ -43,12 +47,12 @@ class Exemplar {
         this.isReservado = isReservado;
     }
 
-    public void setIsReservadoPara(int codigo) {
-        this.reservadoPara = codigo;
+    public void setIsReservadoPara(int codigoUsuario) {
+        this.reservadoPara = codigoUsuario;
     }
 
-    public boolean isReservadoPara(int codigo) {
-        return (this.reservadoPara == codigo);
+    public boolean isReservadoPara(int codigoUsuario) {
+        return (this.reservadoPara == codigoUsuario);
     }
 
     public boolean isDisponivel() {
