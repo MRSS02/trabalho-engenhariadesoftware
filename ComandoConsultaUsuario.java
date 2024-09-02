@@ -6,17 +6,17 @@ class ComandoConsultaUsuario implements Comando {
         Usuario usuario = biblioteca.getUsuarioByCodigo(Integer.parseInt(args[1]));
 
         if (usuario == null) {
-            GerenciadorIO.getInstance().PrintConsultaUsuario("UsuarioNull");
+            GerenciadorIO.getInstance().PrintConsultaUsuario("UsuarioNull", usuario);
             return;
         }
 
         // Exibe os livros reservados pelo usuário
-        List<Exemplar> livrosReservados = usuario.getLivrosReservados();
-        GerenciadorIO.getInstance().PrintLivrosReservados(livrosReservados);
+        List<Reserva> historicoReservas = usuario.getHistoricoReservas();
+        GerenciadorIO.getInstance().PrintLivrosReservados(historicoReservas);
 
         // Exibe os livros emprestados pelo usuário
-        List<Exemplar> livrosEmprestados = usuario.getLivrosEmprestados();
-        GerenciadorIO.getInstance().PrintLivrosEmprestados(livrosEmprestados);
+        List<Emprestimo> historicoEmprestimos = usuario.getHistoricoEmprestimos();
+        GerenciadorIO.getInstance().PrintLivrosEmprestados(historicoEmprestimos);
 
     }
 }

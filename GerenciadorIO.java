@@ -3,7 +3,7 @@ import java.util.List;
 
 public class GerenciadorIO {
 
-    private static GerenciadorIO instance; 
+    private static GerenciadorIO instance;
 
     private GerenciadorIO() {
 
@@ -13,7 +13,7 @@ public class GerenciadorIO {
         if (instance == null) {
             instance = new GerenciadorIO();
         }
-        return instance;   
+        return instance;
     }
 
     public void ProcessarComandos(Map<String, Comando> comandos) {
@@ -28,9 +28,19 @@ public class GerenciadorIO {
         }
     }
 
+    public void PrintConsultaUsuario(String tipoMensagem, Usuario usuario) {
+        switch (tipoMensagem) {
+            case "UsuarioNull":
+                System.out.println("O usuário" + usuario.getNome() + "não existe.");
+                break;
+            default:
+                System.out.println("Erro desconhecido.");
+        }
+    }
+
     public void PrintReserva(String tipoMensagem, Usuario usuario, Livro livro) {
         switch (tipoMensagem) {
-            case "UsuarioNull": 
+            case "UsuarioNull":
                 System.out.println("O usuário não existe.");
                 break;
             case "LivroNull":
@@ -40,27 +50,29 @@ public class GerenciadorIO {
                 System.out.println("Um exemplar não está disponível.");
                 break;
             case "MuitasReservas":
-                System.out.println("O usuário" + usuario.getQuantidadeReservas() 
+                System.out.println("O usuário" + usuario.getQuantidadeReservas()
                         + "já possui três reservas, a quantidade máxima.");
                 break;
 
             case "Sucesso":
-                System.out.println("Livro \"" + livro.getTitulo() + 
-                " reservado para " + usuario.getNome());
+                System.out.println("Livro \"" + livro.getTitulo() +
+                        " reservado para " + usuario.getNome());
                 break;
             default:
                 System.out.println("Erro desconhecido.");
         }
 
-            }
+    }
+
     public void PrintObservacao(Usuario usuario, Livro livro) {
-        System.out.println("A partr de agora " + usuario.getNome() 
+        System.out.println("A partr de agora " + usuario.getNome()
                 + " será notificado quando houver múltiplas reservas simultâneas do livro "
                 + livro.getTitulo());
     }
+
     public void PrintEmprestimo(String tipoMensagem) {
         switch (tipoMensagem) {
-            case "UsuarioNull": 
+            case "UsuarioNull":
                 System.out.println("O usuário não existe.");
                 break;
             case "LivroNull":
@@ -83,9 +95,10 @@ public class GerenciadorIO {
         }
 
     }
+
     public void PrintDevolucao(String tipoMensagem) {
         switch (tipoMensagem) {
-            case "UsuarioNull": 
+            case "UsuarioNull":
                 System.out.println("O usuário não existe.");
                 break;
             case "LivroNull":
@@ -102,7 +115,7 @@ public class GerenciadorIO {
 
     public void PrintAdicionadoObservador(String tipoMensagem) {
         switch (tipoMensagem) {
-            case "Sucesso":        
+            case "Sucesso":
                 System.out.println("Observador adicionado.");
                 break;
             default:
@@ -111,14 +124,13 @@ public class GerenciadorIO {
         }
     }
 
-
     public void PrintConsultaLivro(String tipoMensagem, Usuario usuario, Livro livro) {
         switch (tipoMensagem) {
             case "LivroNull":
                 System.out.println("O livro não existe.");
                 break;
             case "QuantidadeReservas":
-                System.out.println("Título do livro: " + livro.getTitulo() + 
+                System.out.println("Título do livro: " + livro.getTitulo() +
                         "\nQuantidade de reservas:" + livro.getQuantidadeReservas()
                         + "Usuários que realizaram reservas:");
                 for (Exemplar reserva : livro.getReservas()) {
@@ -126,11 +138,11 @@ public class GerenciadorIO {
                     if (usuarioReserva != null) {
                         System.out.println(" - " + usuarioReserva.getNome());
                     }
-                } 
+                }
                 break;
             case "SemReservas":
                 System.out.println("Não há reservas para o livro " + livro.getTitulo());
-            break;
+                break;
             default:
                 System.out.println("Erro desconhecido.");
         }
@@ -152,7 +164,7 @@ public class GerenciadorIO {
                 System.out.println("Status: Emprestado");
                 System.out.println("Usuário: " + usuarioEmprestimo.getNome());
                 System.out.println("Data de Empréstimo: " + exemplar.getDataEmprestimo());
-                System.out.println("Data Prevista para Devolução: " 
+                System.out.println("Data Prevista para Devolução: "
                         + exemplar.getDataDevolucaoPrevista());
             } else {
                 System.out.println("Status: Disponível.");
@@ -160,33 +172,36 @@ public class GerenciadorIO {
         }
 
     }
+
     public void PrintConsultaNotificacao(Observer observador) {
 
-        System.out.println(observador.getNome() + " foi notificado " 
-                + observador.getVezesNotificado() + "vezes."); 
+        System.out.println(observador.getNome() + " foi notificado "
+                + observador.getVezesNotificado() + "vezes.");
 
     }
+
     public void PrintSair() {
         System.out.println("Encerrando programa...");
     }
+
     public void PrintNotificacaoProfessor(String nomeObservador, String nomeLivro) {
-        System.out.println("Professor " + nomeObservador + ", o livro" + 
+        System.out.println("Professor " + nomeObservador + ", o livro" +
                 nomeLivro + " foi reservado mais de uma vez simultaneamente.");
 
     }
 
     public void PrintLivrosReservados(List<Reserva> livrosReservados) {
-    if (livrosReservados.isEmpty()) {
-        System.out.println("Nenhum livro reservado.");
-    } else {
-        System.out.println("Livros reservados:");
-        for (Reserva reserva : livrosReservados) {
-            Livro livro = SistemaBiblioteca.getInstance().getLivroByCodigo(reserva.getCodigoLivro());
-            System.out.println("Título: " + livro.getTitulo());
-            System.out.println("Data Reservada: " + reserva.getDataSolicitacao() + "\n");
+        if (livrosReservados.isEmpty()) {
+            System.out.println("Nenhum livro reservado.");
+        } else {
+            System.out.println("Livros reservados:");
+            for (Reserva reserva : livrosReservados) {
+                Livro livro = SistemaBiblioteca.getInstance().getLivroByCodigo(reserva.getCodigoLivro());
+                System.out.println("Título: " + livro.getTitulo());
+                System.out.println("Data Reservada: " + reserva.getDataSolicitacao() + "\n");
+            }
         }
     }
-}
 
     public void PrintLivrosEmprestados(List<Emprestimo> livrosEmprestados) {
         if (livrosEmprestados.isEmpty()) {

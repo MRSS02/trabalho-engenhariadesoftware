@@ -11,7 +11,7 @@ abstract class Usuario {
     private List<Exemplar> livrosEmprestados = new ArrayList<>();
     private List<Exemplar> livrosReservados = new ArrayList<>();
     private List<Emprestimo> historicoEmprestimos = new ArrayList<>();
-    private List<Reserva> historicoReservas = new ArrayList<>();  
+    private List<Reserva> historicoReservas = new ArrayList<>();
 
     public Usuario(int codigo, String nome, int tempoEmprestimo) {
         this.codigo = codigo;
@@ -23,8 +23,8 @@ abstract class Usuario {
 
     public abstract boolean podeEmprestar();
 
-    public abstract String getTipoUsuario(); 
-    
+    public abstract String getTipoUsuario();
+
     public String getNome() {
         return this.nome;
     }
@@ -47,20 +47,20 @@ abstract class Usuario {
 
     public void reservarLivro(Exemplar exemplar) {
         this.livrosReservados.add(exemplar);
-        this.historicoReservas.add(Fabrica.cadastrarReserva(exemplar.getCodigoLivro(), 
-                    LocalDate.now()));
+        this.historicoReservas.add(Fabrica.cadastrarReserva(exemplar.getCodigoLivro(),
+                LocalDate.now()));
     }
 
     public void pegarEmprestado(Exemplar exemplar) {
         this.livrosEmprestados.add(exemplar);
         this.livrosReservados.remove(exemplar);
-        this.historicoEmprestimos.add(Fabrica.cadastrarEmprestimo(exemplar.getCodigoLivro(), 
-                    LocalDate.now()));
+        this.historicoEmprestimos.add(Fabrica.cadastrarEmprestimo(exemplar.getCodigoLivro(),
+                LocalDate.now()));
     }
 
     public void finalizarEmprestimo(Exemplar exemplar) {
-        for(Emprestimo emprestimo : this.historicoEmprestimos) {
-            if(emprestimo.getCodigoLivro() == exemplar.getCodigoLivro() ) {
+        for (Emprestimo emprestimo : this.historicoEmprestimos) {
+            if (emprestimo.getCodigoLivro() == exemplar.getCodigoLivro()) {
                 emprestimo.setIsFinalizado(true);
                 emprestimo.setDataDevolucao(LocalDate.now());
             }
@@ -76,20 +76,20 @@ abstract class Usuario {
             this.resetTempoEmprestimo();
         } else {
             int tempoEmprestimo = this.getTempoEmprestimoBase();
-            for(Exemplar exemplarIterator : this.livrosEmprestados) {
-            int diasDevolucao = exemplar.getDiasDevolucao();
-            if(diasDevolucao < tempoEmprestimo ) {
-                tempoEmprestimo = diasDevolucao;
-            }
+            for (Exemplar exemplarIterator : this.livrosEmprestados) {
+                int diasDevolucao = exemplar.getDiasDevolucao();
+                if (diasDevolucao < tempoEmprestimo) {
+                    tempoEmprestimo = diasDevolucao;
+                }
             }
             this.tempoEmprestimo = tempoEmprestimo;
 
         }
     }
-    
+
     public Exemplar getExemplarByCodigoLivro(int codigoLivro) {
-        for(Exemplar exemplar : this.livrosEmprestados) {
-            if(exemplar.getCodigoLivro() == codigoLivro) {
+        for (Exemplar exemplar : this.livrosEmprestados) {
+            if (exemplar.getCodigoLivro() == codigoLivro) {
                 return exemplar;
             }
         }
@@ -102,12 +102,19 @@ abstract class Usuario {
     }
 
     public List<Exemplar> getLivrosReservados() {
-         return this.livrosReservados;
+        return this.livrosReservados;
     }
 
     public List<Exemplar> getLivrosEmprestados() {
-         return this.livrosEmprestados;
+        return this.livrosEmprestados;
     }
 
+    public List<Emprestimo> getHistoricoEmprestimos() {
+        return this.historicoEmprestimos;
+    }
+
+    public List<Reserva> getHistoricoReservas() {
+        return this.historicoReservas;
+    }
 
 }
