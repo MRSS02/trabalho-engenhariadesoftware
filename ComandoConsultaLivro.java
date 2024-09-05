@@ -16,7 +16,7 @@ class ComandoConsultaLivro implements Comando {
             if (quantidadeReservas > 0) {
                 gerenciadorIO.PrintConsultaLivro("QuantidadeReservas", livro);
             } else {
-                gerenciadorIO.PrintConsultaLivro("Sem reservas", livro);
+                gerenciadorIO.PrintConsultaLivro("SemReservas", livro);
             }
 
         // Exibir informações dos exemplares

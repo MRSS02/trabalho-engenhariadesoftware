@@ -22,8 +22,10 @@ class Exemplar {
         for(Livro livro : SistemaBiblioteca.getInstance().getListaLivros()) {
             if(livro.getCodigo() == codigoLivro ) {
                 this.livro = livro;
+                break;
             }
         }
+        this.livro.adicionarExemplar(this);
       
     }
 

@@ -10,6 +10,8 @@ class ComandoConsultaUsuario implements Comando {
             return;
         }
 
+        GerenciadorIO.getInstance().PrintConsultaUsuario("Nome", usuario);
+
         // Exibe os livros reservados pelo usuário
         List<Reserva> historicoReservas = usuario.getHistoricoReservas();
         GerenciadorIO.getInstance().PrintLivrosReservados(historicoReservas);

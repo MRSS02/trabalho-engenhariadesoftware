@@ -33,6 +33,9 @@ public class GerenciadorIO {
             case "UsuarioNull":
                 System.out.println("O usuário não existe.");
                 break;
+            case "Nome":
+                System.out.println("Usuário " + usuario.getNome() + ":");
+                break;
             default:
                 System.out.println("Erro desconhecido.");
         }
@@ -79,7 +82,7 @@ public class GerenciadorIO {
                 System.out.println("O livro não existe.");
                 break;
             case "ExemplarNaoDisponivel":
-                System.out.println("Um exemplar do livro" + livro.getTitulo() + "não está disponível.");
+                System.out.println("Um exemplar do livro \"" + livro.getTitulo() + "\" não está disponível.");
                 break;
             case "Devedor":
                 System.out.println("O usuário deve um empréstimo.");
@@ -138,7 +141,7 @@ public class GerenciadorIO {
                 System.out.println("O livro não existe.");
                 break;
             case "QuantidadeReservas":
-                System.out.println("Título do livro: " + livro.getTitulo() +
+                System.out.println("Título do livro: \"" + livro.getTitulo() + "\"" +
                         "\nQuantidade de reservas:" + livro.getQuantidadeReservas()
                         + "Usuários que realizaram reservas:");
                 for (Exemplar reserva : livro.getReservas()) {
@@ -149,7 +152,7 @@ public class GerenciadorIO {
                 }
                 break;
             case "SemReservas":
-                System.out.println("Não há reservas para o livro " + livro.getTitulo());
+                System.out.println("Não há reservas para o livro \"" + livro.getTitulo() + "\"");
                 break;
             default:
                 System.out.println("Erro desconhecido.");
@@ -181,10 +184,18 @@ public class GerenciadorIO {
 
     }
 
-    public void PrintConsultaNotificacao(Observer observador) {
-
-        System.out.println(observador.getNome() + " foi notificado "
-                + observador.getVezesNotificado() + "vezes.");
+    public void PrintConsultaNotificacao(String tipoMensagem, Observer observador) {
+        switch (tipoMensagem) {
+            case "ObservadorNull":
+                System.out.println("O usuário não está cadastrado para receber notificações.");
+                break;
+            case "Sucesso":
+                System.out.println(observador.getNome() + " foi notificado "
+                + observador.getVezesNotificado() + " vezes.");
+                break;
+            default:
+                System.out.println("Erro desconhecido.");
+        }
 
     }
 
@@ -193,8 +204,8 @@ public class GerenciadorIO {
     }
 
     public void PrintNotificacaoProfessor(String nomeObservador, String nomeLivro) {
-        System.out.println("Professor " + nomeObservador + ", o livro" +
-                nomeLivro + " foi reservado mais de uma vez simultaneamente.");
+        System.out.println("Professor " + nomeObservador + ", o livro \"" +
+                nomeLivro + "\" foi reservado mais de uma vez simultaneamente.");
 
     }
 

@@ -39,6 +39,10 @@ class Livro {
         return this.exemplares;
     }
 
+    public void adicionarExemplar(Exemplar exemplar) {
+        this.exemplares.add(exemplar);
+    }
+
     public List<Exemplar> getReservas() {
         return this.reservas;
     }
