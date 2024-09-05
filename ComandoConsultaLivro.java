@@ -1,12 +1,11 @@
 class ComandoConsultaLivro implements Comando {
     public void executar(String[] args) {
         SistemaBiblioteca biblioteca = SistemaBiblioteca.getInstance();
-        Usuario usuario = biblioteca.getUsuarioByCodigo(Integer.parseInt(args[1]));
-        Livro livro = biblioteca.getLivroByCodigo(Integer.parseInt(args[2]));
+        Livro livro = biblioteca.getLivroByCodigo(Integer.parseInt(args[1]));
         GerenciadorIO gerenciadorIO = GerenciadorIO.getInstance();
         // Exemplar exemplar = biblioteca.getExemplarByCodigoLivro(Integer.parseInt(args[2]));
         if (livro == null) {
-            gerenciadorIO.PrintConsultaLivro("LivroNull", usuario, livro);
+            gerenciadorIO.PrintConsultaLivro("LivroNull", livro);
             return;
         }
           
@@ -15,13 +14,13 @@ class ComandoConsultaLivro implements Comando {
             int quantidadeReservas = livro.getQuantidadeReservas();
             // Exibir nomes dos usuários que fizeram reservas, se houver
             if (quantidadeReservas > 0) {
-                gerenciadorIO.PrintConsultaLivro("QuantidadeReservas", usuario, livro);
+                gerenciadorIO.PrintConsultaLivro("QuantidadeReservas", livro);
             } else {
-                gerenciadorIO.PrintConsultaLivro("Sem reservas", usuario, livro);
+                gerenciadorIO.PrintConsultaLivro("Sem reservas", livro);
             }
 
         // Exibir informações dos exemplares
-            gerenciadorIO.PrintConsultaExemplares(usuario, livro);    
+            gerenciadorIO.PrintConsultaExemplares(livro);    
     }
 }
 

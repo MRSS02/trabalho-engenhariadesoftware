@@ -15,8 +15,8 @@ class AlunoPos extends Usuario {
         return (this.getLimiteEmprestimos() > 0 && this.getTempoEmprestimo() > 0);
     }
 
-    public String getTipoUsuario() {
-        return "AlunoGraduacao";
+    public boolean podeEmprestimosIlimitados() {
+        return false;
     }
  
 

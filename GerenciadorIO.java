@@ -56,7 +56,7 @@ public class GerenciadorIO {
 
             case "Sucesso":
                 System.out.println("Livro \"" + livro.getTitulo() +
-                        " reservado para " + usuario.getNome());
+                        "\" reservado para " + usuario.getNome());
                 break;
             default:
                 System.out.println("Erro desconhecido.");
@@ -65,9 +65,9 @@ public class GerenciadorIO {
     }
 
     public void PrintObservacao(Usuario usuario, Livro livro) {
-        System.out.println("A partr de agora " + usuario.getNome()
-                + " será notificado quando houver múltiplas reservas simultâneas do livro "
-                + livro.getTitulo());
+        System.out.println("usuario.getNome()"
+                + ", há múltiplas reservas simultâneas do livro \""
+                + livro.getTitulo() + "\"");
     }
 
     public void PrintEmprestimo(String tipoMensagem, Usuario usuario, Livro livro) {
@@ -89,7 +89,7 @@ public class GerenciadorIO {
                 break;
             case "Sucesso":
                 System.out.println("Livro \"" + livro.getTitulo() +
-                        " reservado para " + usuario.getNome());
+                        "\" reservado para " + usuario.getNome());
                 break;
             default:
                 System.out.println("Erro desconhecido.");
@@ -105,9 +105,13 @@ public class GerenciadorIO {
             case "LivroNull":
                 System.out.println("O livro não existe.");
                 break;
+            case "LivroNaoEmprestado":
+                System.out.println("O livro \"" + livro.getTitulo() +
+                        "\" não está emprestado para " + usuario.getNome());
+                break;
             case "Sucesso":
                 System.out.println("Livro \"" + livro.getTitulo() +
-                        " emprestado para " + usuario.getNome());
+                        "\" emprestado para " + usuario.getNome());
                 break;
             default:
                 System.out.println("Erro desconhecido.");
@@ -118,8 +122,9 @@ public class GerenciadorIO {
     public void PrintAdicionadoObservador(String tipoMensagem, Usuario usuario, Livro livro) {
         switch (tipoMensagem) {
             case "Sucesso":
-                System.out.println("Agora" + usuario.getNome() + 
-                        "será notificado caso houverem múltiplas reservas do livro" + livro.getTitulo());
+                System.out.println("A partir de agora " + usuario.getNome()
+                + " será notificado quando houver múltiplas reservas simultâneas do livro \""
+                + livro.getTitulo() + "\"");
                 break;
             default:
                 System.out.println("Erro desconhecido.");
@@ -127,7 +132,7 @@ public class GerenciadorIO {
         }
     }
 
-    public void PrintConsultaLivro(String tipoMensagem, Usuario usuario, Livro livro) {
+    public void PrintConsultaLivro(String tipoMensagem, Livro livro) {
         switch (tipoMensagem) {
             case "LivroNull":
                 System.out.println("O livro não existe.");
@@ -152,7 +157,7 @@ public class GerenciadorIO {
 
     }
 
-    public void PrintConsultaExemplares(Usuario usuario, Livro livro) {
+    public void PrintConsultaExemplares(Livro livro) {
         System.out.println("Exemplares:");
         for (Exemplar exemplar : livro.getExemplares()) {
             System.out.println("Código do Exemplar: " + exemplar.getCodigoExemplar());
