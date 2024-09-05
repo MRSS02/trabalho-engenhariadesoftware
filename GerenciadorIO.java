@@ -31,7 +31,7 @@ public class GerenciadorIO {
     public void PrintConsultaUsuario(String tipoMensagem, Usuario usuario) {
         switch (tipoMensagem) {
             case "UsuarioNull":
-                System.out.println("O usuário" + usuario.getNome() + "não existe.");
+                System.out.println("O usuário não existe.");
                 break;
             default:
                 System.out.println("Erro desconhecido.");

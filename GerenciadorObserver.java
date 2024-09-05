@@ -4,6 +4,7 @@ import java.util.List;
 public class GerenciadorObserver {
 
     private static GerenciadorObserver instance; 
+    List<Observer> observadores = new ArrayList<>();
 
     private GerenciadorObserver() {
     
@@ -17,7 +18,7 @@ public class GerenciadorObserver {
     }
 
 
-    List<Observer> observadores = new ArrayList<>();
+    
 
     public void inscrever(Observer observador) {
         observadores.add(observador);

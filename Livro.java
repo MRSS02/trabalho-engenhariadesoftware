@@ -56,9 +56,6 @@ class Livro {
         this.reservas.remove(exemplar);
     }
 
-
-    // Métodos para gerenciar exemplares e reservas
-
     public int getCodigo() {
         return codigo;
     }
