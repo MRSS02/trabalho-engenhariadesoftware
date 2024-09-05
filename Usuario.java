@@ -23,7 +23,7 @@ abstract class Usuario {
 
     public abstract boolean podeEmprestar();
 
-    public abstract String getTipoUsuario();
+    public abstract boolean podeEmprestimosIlimitados();
 
     public String getNome() {
         return this.nome;

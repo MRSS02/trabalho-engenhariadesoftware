@@ -7,22 +7,22 @@ class ComandoEmprestimo implements Comando {
         Livro livro = biblioteca.getLivroByCodigo(Integer.parseInt(args[2]));
         Exemplar exemplar = biblioteca.getExemplarByCodigoLivro(Integer.parseInt(args[2]));
         if (usuario == null) {
-            GerenciadorIO.getInstance().PrintEmprestimo("UsuarioNull");
+            GerenciadorIO.getInstance().PrintEmprestimo("UsuarioNull", null, null);
             return;
         }
         if (livro == null) {
-            GerenciadorIO.getInstance().PrintEmprestimo("LivroNull");
+            GerenciadorIO.getInstance().PrintEmprestimo("LivroNull", null, null);
             return;
         }
         if (exemplar == null) {
-            GerenciadorIO.getInstance().PrintEmprestimo("ExemplarNaoDisponivel");
+            GerenciadorIO.getInstance().PrintEmprestimo("ExemplarNaoDisponivel", null, null);
             return;
         }
         if (usuario.getTempoEmprestimo() <= 0) {
-            GerenciadorIO.getInstance().PrintEmprestimo("Devedor");
+            GerenciadorIO.getInstance().PrintEmprestimo("Devedor", null, null);
         }
-        if (!(usuario.getTipoUsuario() == "Professor") && exemplar.isReservado() && !exemplar.isReservadoPara(usuario.getCodigo())) {
-            GerenciadorIO.getInstance().PrintEmprestimo("Reservado");
+        if (!(usuario.podeEmprestimosIlimitados()) && exemplar.isReservado() && !exemplar.isReservadoPara(usuario.getCodigo())) {
+            GerenciadorIO.getInstance().PrintEmprestimo("Reservado", null, null);
             return;
         }
         usuario.pegarEmprestado(exemplar);
@@ -30,7 +30,7 @@ class ComandoEmprestimo implements Comando {
         exemplar.setDataDevolucaoPrevista(LocalDate.now().plusDays(usuario.getTempoEmprestimoBase()));
         exemplar.setIsReservado(false);
         exemplar.setIsDisponivel(false);
-        GerenciadorIO.getInstance().PrintEmprestimo("Sucesso");
+        GerenciadorIO.getInstance().PrintEmprestimo("Sucesso", usuario, livro);
 
         
     }

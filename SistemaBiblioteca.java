@@ -20,7 +20,7 @@ public class SistemaBiblioteca {
         return instance;
     }
 
-    private void inicializarDados() {
+    public void inicializarDados() {
         // Inicializa dados de livros e usuários para testes
         ListaUsuarios.add(Fabrica.cadastrarAlunoGraduacao(123, "João da Silva"));
         ListaUsuarios.add(Fabrica.cadastrarAlunoPos(456, "Luiz Fernando Rodrigues"));

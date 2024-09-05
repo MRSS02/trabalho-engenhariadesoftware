@@ -8,8 +8,8 @@ class Professor extends Usuario {
         return (this.getTempoEmprestimo() > 0);
     }
 
-    public String getTipoUsuario() {
-        return "Professor";
+    public boolean podeEmprestimosIlimitados() {
+        return true;
     }
 
 

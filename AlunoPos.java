@@ -16,7 +16,7 @@ class AlunoPos extends Usuario {
     }
 
     public String getTipoUsuario() {
-        return "AlunoPos";
+        return "AlunoGraduacao";
     }
  
 
